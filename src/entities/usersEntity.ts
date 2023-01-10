@@ -3,11 +3,13 @@ import {
   CreateDateColumn,
   Entity,
   JoinColumn,
+  OneToMany,
   OneToOne,
   PrimaryGeneratedColumn,
   UpdateDateColumn,
 } from "typeorm";
 import { Addresses } from "./addressesEntity";
+import { Pets } from "./petsEntity";
 
 @Entity("users")
 export class Users {
@@ -41,4 +43,7 @@ export class Users {
   @OneToOne(() => Addresses, (addresses) => addresses.user)
   @JoinColumn()
   address: Addresses;
+
+  @OneToMany(() => Pets, (pets) => pets.user)
+  pets: Pets[];
 }
