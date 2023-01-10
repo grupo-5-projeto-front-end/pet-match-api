@@ -10,6 +10,7 @@ import {
   UpdateDateColumn,
 } from "typeorm";
 import { Addresses } from "./addressesEntity";
+import { Comments } from "./commentsEntity";
 import { Pets } from "./petsEntity";
 
 @Entity("users")
@@ -50,4 +51,7 @@ export class Users {
 
   @OneToMany(() => Pets, (pets) => pets.user)
   pets: Pets[];
+
+  @OneToMany(() => Comments, (comments) => comments.user)
+  comments: Comments[];
 }
