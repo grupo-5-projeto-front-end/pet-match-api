@@ -6,9 +6,8 @@ export const mockedUser: IUserRequest ={
     email: "petmatch@mail.com",
     password: "123456",
     phone:"21971717171",
-    isActive: true,
     avatar:"img",
-    adressId:{
+    adress:{
         city:"rua do Pets teste",
         state: "Narnia",
         street: "Rua dos pets Test",
