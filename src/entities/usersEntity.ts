@@ -2,9 +2,12 @@ import {
   Column,
   CreateDateColumn,
   Entity,
+  JoinColumn,
+  OneToOne,
   PrimaryGeneratedColumn,
   UpdateDateColumn,
 } from "typeorm";
+import { Addresses } from "./addressesEntity";
 
 @Entity("users")
 export class Users {
@@ -34,4 +37,8 @@ export class Users {
 
   @UpdateDateColumn()
   updatedAt: Date;
+
+  @OneToOne(() => Addresses, (addresses) => addresses.user)
+  @JoinColumn()
+  address: Addresses;
 }
