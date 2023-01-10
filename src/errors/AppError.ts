@@ -4,9 +4,9 @@ class AppError extends Error {
     
     constructor (message: string, statusCode = 400) {
         super();
-        this.message = message
-        this.statusCode = statusCode
-    }
-}
+        this.message = message;
+        this.statusCode = statusCode;
+    };
+};
 
-export default AppError
+export default AppError;
