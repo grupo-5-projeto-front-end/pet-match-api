@@ -20,7 +20,7 @@ export const verifyAuth = async (req: Request, resp: Response, next: NextFunctio
             id: decoded.sub,
             email: decoded.email
         }
-
-        return next()
     })
+    
+    return next()
 }
