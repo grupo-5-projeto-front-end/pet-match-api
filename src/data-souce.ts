@@ -6,25 +6,25 @@ import path from "path";
 export const setDataSourceConfig = (): DataSourceOptions => {
   const entitiesPath: string = path.join(__dirname, "./entities/**.{js,ts}");
   const migrations: string = path.join(__dirname, "./migrations/**.{js,ts}");
-  const dotEnv = process.env.NODE_ENV;
+  const nodeEnv = process.env.NODE_ENV;
 
-  if (dotEnv === "prodution") {
+  if (nodeEnv === "production") {
     return {
       type: "postgres",
       url: process.env.DATABASE_URL,
       entities: [entitiesPath],
-      migrations: [migrations],
+      migrations: [migrations]
     };
-  }
+  };
 
-  if (dotEnv === "test") {
+  if (nodeEnv === "test") {
     return {
       type: "sqlite",
       database: ":memory:",
       synchronize: true,
-      entities: ["src/entities/*.ts"],
+      entities: [entitiesPath]
     };
-  }
+  };
 
   return {
     type: "postgres",
@@ -36,10 +36,9 @@ export const setDataSourceConfig = (): DataSourceOptions => {
     logging: true,
     synchronize: false,
     entities: [entitiesPath],
-    migrations: [migrations],
+    migrations: [migrations]
   };
 };
 
-
-const dataSource = setDataSourceConfig ();
-export const AppDataSource = new DataSource( dataSource)
+const dataSource = setDataSourceConfig();
+export const AppDataSource = new DataSource(dataSource);

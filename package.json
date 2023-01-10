@@ -1,8 +1,10 @@
 {
   "name": "petmatch_api",
   "version": "1.0.0",
-  "main": "index.ts",
-  "author": "Grup5>",
+  "main": "index.js",
+  "repository": "git@github.com:grupo-5-projeto-front-end/pet-match-api.git",
+  "author": "Grupo5",
+  "license": "MIT",
   "scripts": {
     "dev": "ts-node-dev --ignore-watch node_modules src/server.ts",
     "typeorm": "typeorm-ts-node-commonjs",
