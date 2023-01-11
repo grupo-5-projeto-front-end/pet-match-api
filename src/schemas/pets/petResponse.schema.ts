@@ -4,6 +4,7 @@ import { IPetResponse } from '../../interfaces/pets'
 import { userResponseSchema } from '../users/userResponse.schema'
 
 export const petResponseSchema:SchemaOf<any> = yup.object().shape({
+    id: yup.string().required(),
     name: yup.string().required(),
     sex: yup.string().required(),
     category: yup.string().required(),

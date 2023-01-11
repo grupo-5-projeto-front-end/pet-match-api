@@ -2,7 +2,7 @@ import { DataSource } from "typeorm";
 import { AppDataSource } from "../../../data-source";
 import request from "supertest";
 import { app } from "../../../app";
-import { mockedLogin, mockedPet, mockedUser } from "../../mocks/mockPetsTests";
+import { mockedPet, mockedUser, mockedUserLogin } from "../../mocks";
 
 describe("/pets", () => {
   let connection: DataSource;
@@ -14,7 +14,7 @@ describe("/pets", () => {
         console.error("Error during Data Source initialization", err)
       );
 
-    await request(app).post("/users").send(mockedUser);
+      await request(app).post("/users").send(mockedUser);
   });
 
   afterAll(async () => {
@@ -22,8 +22,8 @@ describe("/pets", () => {
   });
 
   test("POST /pets - Should be able to create a pet", async () => {
-    const loginRes = await request(app).post("/login").send(mockedLogin);
-    
+  
+    const loginRes = await request(app).post("/login").send(mockedUserLogin);
     const response = await request(app)
       .post("/pets")
       .send(mockedPet)
@@ -80,7 +80,7 @@ describe("/pets", () => {
   });
 
   test("GET /pets/users/:id - Should be able to get all pets of a user", async () => {
-    const loginRes = await request(app).post("/login").send(mockedLogin);
+    const loginRes = await request(app).post("/login").send(mockedUserLogin);
 
     const user = await request(app).get("/users");
     const userId = user.body[0].id;
@@ -94,7 +94,7 @@ describe("/pets", () => {
   });
 
   test("PATCH /pets/:id - Should be able to update pet information", async () => {
-    const loginRes = await request(app).post("/login").send(mockedLogin);
+    const loginRes = await request(app).post("/login").send(mockedUserLogin);
 
     const pets = await request(app).get("/pets");
     const petId = pets.body[0].id;
@@ -121,7 +121,7 @@ describe("/pets", () => {
   });
 
   test("DELETE /pets/:id - Should be able to soft delete a pet", async () => {
-    const loginRes = await request(app).post("/login").send(mockedLogin);
+    const loginRes = await request(app).post("/login").send(mockedUserLogin);
 
     const pets = await request(app).get("/pets");
     const petId = pets.body[0].id;
@@ -133,7 +133,6 @@ describe("/pets", () => {
     expect(response.status).toBe(204);
 
     const pet = await request(app).get(`/pets/${petId}`);
-
     expect(pet.body.isActive).toBe(false);
   });
 });
