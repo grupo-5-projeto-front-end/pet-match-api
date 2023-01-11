@@ -2,7 +2,7 @@ import { AppDataSource } from "../../data-source";
 import { Users } from "../../entities/usersEntity";
 import AppError from "../../errors/AppError";
 
-export const softDeleteUserService = async (userId: string) => {
+export const softDeleteUserService = async (userId: string): Promise<void> => {
     const userRepo = AppDataSource.getRepository(Users);
 
     const userToBeDeleted = await userRepo.findOne({
@@ -26,5 +26,5 @@ export const softDeleteUserService = async (userId: string) => {
         isActive: false
     })
 
-    return user
+    return 
 }
