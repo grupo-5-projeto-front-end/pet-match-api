@@ -9,8 +9,6 @@ export interface IPetRequest{
     age:string,
     bio:string,
     avatar?:string,
-    isActive:boolean,
-    user: IUserResponse
 }
 
 

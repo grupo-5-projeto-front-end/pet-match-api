@@ -91,7 +91,6 @@ describe("/users", () => {
 
 })
 
-
   test("GET /users: should be not list users if don't have token", async ()=>{
     const  response = await request(app).get(baseURL)
     expect(response.body).toHaveProperty("message")
