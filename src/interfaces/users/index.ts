@@ -1,4 +1,5 @@
-import { IAddressRequest } from "../address";
+import { IAddressRequest } from "../address"
+import { IComments } from "../comments"
 
 export interface IUserRequest {
   name: string;
@@ -20,11 +21,14 @@ export interface IUserResponse {
   updatedAt: Date;
   address: IAddressRequest;
 } //sem passsword
+export interface IUserCommentResponse extends IUserResponse {
+  comments: IComments[]
+};
 
-export interface IUserLogin {
-  email: string;
-  password: string;
-}
+export interface IUserLogin{
+  email: string,
+  password: string
+};
 
 export interface IUserUpdate {
   name: string;
