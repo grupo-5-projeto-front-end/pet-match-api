@@ -1,7 +1,8 @@
-import { Router } from "express";
+import { Router } from "express"
 import { createCommentController } from "../controllers";
-import { verifyAuth, verifyUserIdParameter } from "../middleware";
+import { verifyAuth, verifyRequestPerSchema, verifyUserIdParameter } from "../middleware";
+import { commentRequestSchema } from "../schemas";
 
 export const commentsRoutes = Router();
 
-commentsRoutes.get("/users/:id", verifyUserIdParameter, verifyAuth, createCommentController);
+commentsRoutes.post("/comments/:id", verifyUserIdParameter, verifyAuth, verifyRequestPerSchema(commentRequestSchema), createCommentController);

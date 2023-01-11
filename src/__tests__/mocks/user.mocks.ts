@@ -14,6 +14,10 @@ export const mockedUser: IUserRequest ={
         zipCode: "00000000"
     }
 }
+export const mockedUserLogin:IUserLogin ={
+    email: "petmatch@mail.com",
+    password: "123456",
+}
 
 export const mockedSegundUser: IUserRequest ={
     name: "SegundoUser",
@@ -30,10 +34,7 @@ export const mockedSegundUser: IUserRequest ={
     }
 }
 
-export const mockedUserLogin:IUserLogin ={
-    email:"petmatch@mail.com",
-    password: "123456"
-}
+
 export const mockedUpdate:IUserUpdate ={
     name: "usuarioTesteUpdate",
     email: "petmatch@mail.com",
