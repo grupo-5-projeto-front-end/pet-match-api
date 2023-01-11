@@ -1,5 +1,4 @@
 import { hash } from "bcryptjs";
-import { AnySchema } from "yup";
 import { AppDataSource } from "../../data-source";
 import { Addresses } from "../../entities/addressesEntity";
 import { Users } from "../../entities/usersEntity";
