@@ -4,5 +4,5 @@ import { listUsersService } from "../../services";
 export const listUsersController = async (req: Request, res: Response) => {
     const users = await listUsersService();
 
-    return res.status(200).json(users)
+    return res.status(200).json(users);
 };

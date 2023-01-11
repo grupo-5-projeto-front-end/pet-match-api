@@ -7,4 +7,4 @@ export const usersRoutes = Router();
 
 usersRoutes.post("/users", verifyRequestPerSchema(userRequestSchema), createUserController);
 
-usersRoutes.get("/users", listUsersController)
+usersRoutes.get("/users", listUsersController);

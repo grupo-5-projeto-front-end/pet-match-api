@@ -1,5 +1,5 @@
-import { AppDataSource } from "../../data-source"
-import { Users } from "../../entities/usersEntity"
+import { AppDataSource } from "../../data-source";
+import { Users } from "../../entities/usersEntity";
 
 export const listUsersService = async (): Promise<Users[]> => {
     const userRepo = AppDataSource.getRepository(Users);
@@ -9,8 +9,8 @@ export const listUsersService = async (): Promise<Users[]> => {
             address: true
         }
     });
-    
+
     users.forEach(e => delete e.password);
 
     return users;
-}
+};
