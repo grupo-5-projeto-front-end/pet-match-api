@@ -11,6 +11,4 @@ export const petRequestSchema:SchemaOf<IPetRequest> = yup.object().shape({
     age: yup.string().required(),
     bio: yup.string().required(),
     avatar: yup.string(),
-    isActive: yup.boolean().required(),
-    user: userResponseSchema
 })
