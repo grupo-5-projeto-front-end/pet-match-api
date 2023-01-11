@@ -60,8 +60,19 @@ describe("/comments", () => {
 
       const response = await request(app).get(`/comments/${userId}`).set("Authorization", `Bearer ${loginRes.body.token}`)
 
-        expect(response.status).toBe(200)
-        expect(response.body).toHaveProperty("map")
+        expect(response.status).toBe(200)          
+      expect(response.body).toHaveProperty("id")
+      expect(response.body).toHaveProperty("name")
+      expect(response.body).toHaveProperty("email")
+      expect(response.body).toHaveProperty("phone")
+      expect(response.body).toHaveProperty("avatar")
+      expect(response.body).toHaveProperty("isActive")
+      expect(response.body).toHaveProperty("createdAt")
+      expect(response.body).toHaveProperty("updatedAt")
+      expect(response.body).toHaveProperty("address")
+      expect(response.body).not.toHaveProperty("password")
+      expect(response.body).not.toHaveProperty("deletedAt")
+      expect(response.body).toHaveProperty("comments")
 
     })
 
@@ -70,7 +81,7 @@ describe("/comments", () => {
       const userId = user.body[0].id
       const response = await request(app).get(`/comments/${userId}`)
 
-        expect(response.status).toBe(400)
+        expect(response.status).toBe(401)
         expect(response.body).toHaveProperty("message")
 
     })

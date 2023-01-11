@@ -133,7 +133,6 @@ describe("/pets", () => {
     expect(response.status).toBe(204);
 
     const pet = await request(app).get(`/pets/${petId}`);
-
     expect(pet.body.isActive).toBe(false);
   });
 });

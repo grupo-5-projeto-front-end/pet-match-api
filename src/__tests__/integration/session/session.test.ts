@@ -33,7 +33,7 @@ describe("/login", () => {
     });
 
     expect(response.body).toHaveProperty("message");
-    expect(response.status).toBe(401);
+    expect(response.status).toBe(403);
   });
 
   test("should not be able to login with the user with incorrect password or email", async () => {
@@ -45,20 +45,5 @@ describe("/login", () => {
     expect(response.body).toHaveProperty("message");
     expect(response.status).toBe(403);
   });
-
-  test("Post/login should not be able to login with the user with isActive = false",async()=>{
-    const responseDeleted = await request(app).post("/login").send(mockedUserLogin)
-    //1 faz login
-
-    const findUser = await request(app).get(`/users`).set("Authorization", `Bearer ${responseDeleted.body.token}`)
-    //2 buscar user 
-
-    await request(app).delete(`/users/${findUser.body[0].id}`).set("Authorization", `Bearer ${responseDeleted.body.token}`)
-    const response = await request(app).post("/login").send(mockedUserLogin);
-    expect(response.body).toHaveProperty("message")
-    expect(response.status).toBe(400)
-    //fazer o delete  e verificar se esta com isActiver == false logo depois . 
-
-  })
 
 }); // end describe

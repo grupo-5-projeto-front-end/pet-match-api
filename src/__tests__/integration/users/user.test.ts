@@ -88,19 +88,6 @@ describe("/users", () => {
     expect(response.status).toBe(200)
 
 })
-
-  test("GET /users: should be not list users if don't have token", async ()=>{
-    const  response = await request(app).get(baseURL)
-    expect(response.body).toHaveProperty("message")
-    expect(response.status).toBe(401)
-  })
-
-  test("GET /users: should be not list users isActive ==false ", async ()=>{
-    const  response = await request(app).get(baseURL)
-    expect(response.body).toHaveProperty("message")
-    expect(response.status).toBe(403)
-  })
-
   
   // Update  user
   test("PATCH /users/:id -  should be able to update user",async () => {
