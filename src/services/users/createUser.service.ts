@@ -6,7 +6,7 @@ import AppError from "../../errors/AppError";
 import { IUserRequest } from "../../interfaces/users";
 import { userResponseSchema } from "../../schemas";
 
-export const createUserService = async (body: IUserRequest): Promise<any> => {
+export const createUserService = async (body: IUserRequest) => {
     const { email, address } = body;
     const { state, zipCode } = address;
     const userRepo = AppDataSource.getRepository(Users);

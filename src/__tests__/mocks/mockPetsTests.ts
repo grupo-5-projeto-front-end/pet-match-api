@@ -29,3 +29,10 @@ export const mockedPet = {
   bio: "Biografia de teste do pet",
   avatar: "img",
 };
+
+//********* MockedComments *********
+
+export const mockedComment = {
+  userId: "",
+  comment: "este é um comentário",
+}

@@ -1,15 +1,17 @@
 import { Router } from "express";
 import {
   createUserController,
+  listUserByIdController,
   listUsersController,
+  softDeleteUserController,
   patchUserController,
 } from "../controllers";
+import { userRequestSchema, userUpdateRequestSchema } from "../schemas";
 import {
   verifyAuth,
   verifyRequestPerSchema,
   verifyUserIdParameter,
 } from "../middleware";
-import { userRequestSchema, userUpdateRequestSchema } from "../schemas";
 
 export const usersRoutes = Router();
 
@@ -21,6 +23,8 @@ usersRoutes.post(
 
 usersRoutes.get("/users", listUsersController);
 
+usersRoutes.get("/users/:id", verifyUserIdParameter, listUserByIdController);
+
 usersRoutes.patch(
   "/users/:id",
   verifyUserIdParameter,
@@ -28,3 +32,5 @@ usersRoutes.patch(
   verifyRequestPerSchema(userUpdateRequestSchema),
   patchUserController
 );
+
+usersRoutes.delete("/users", verifyAuth, softDeleteUserController);
