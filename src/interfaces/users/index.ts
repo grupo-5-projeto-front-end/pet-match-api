@@ -18,7 +18,7 @@ export interface IUserResponse {
   isActive:boolean,
   createdAt:Date,
   updatedAt:Date
-  adress: IAddressRequest
+  address: IAddressRequest
   deletedAt?: Date
 }//sem passsword
 
