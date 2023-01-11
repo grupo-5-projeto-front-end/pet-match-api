@@ -13,13 +13,12 @@ export interface IUserResponse {
   id:string
   name: string,
   email: string,
-  phone:string,
-  avatar:string,
-  isActive:boolean,
-  createdAt:Date,
-  updatedAt:Date
+  phone: string,
+  avatar: string,
+  isActive: boolean,
+  createdAt: Date,
+  updatedAt: Date
   address: IAddressRequest
-  deletedAt?: Date
 }//sem passsword
 
 

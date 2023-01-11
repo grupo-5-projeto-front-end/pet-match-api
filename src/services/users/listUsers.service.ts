@@ -1,7 +1,8 @@
 import { AppDataSource } from "../../data-source";
 import { Users } from "../../entities/usersEntity";
+import { userArraySchema } from "../../schemas/users/userResponse.schema";
 
-export const listUsersService = async (): Promise<Users[]> => {
+export const listUsersService = async (): Promise<any> => {
     const userRepo = AppDataSource.getRepository(Users);
 
     const users = await userRepo.find({
@@ -10,7 +11,7 @@ export const listUsersService = async (): Promise<Users[]> => {
         }
     });
 
-    users.forEach(e => delete e.password);
+    const validatedArray = await userArraySchema.validate(users, {stripUnknown: true});
 
-    return users;
+    return validatedArray;
 };

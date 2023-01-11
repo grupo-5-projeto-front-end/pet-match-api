@@ -1,7 +1,8 @@
 import { Request, Response, NextFunction } from "express";
+import { AnySchema } from "yup";
 import AppError from "../errors/AppError";
 
-export const verifyRequestPerSchema = (schema: { validate: (arg0: any, arg1: { abortEarly: boolean; stripUnknown: boolean; }) => any }) => async (req: Request, res: Response, next: NextFunction) => {
+export const verifyRequestPerSchema = (schema: AnySchema) => async (req: Request, res: Response, next: NextFunction) => {
     try {
         const validate = await schema.validate(req.body, {
             abortEarly: false,
