@@ -8,9 +8,9 @@ export interface ICommentsRequestDummy {
 }
 
 export interface IComments{
-    id:string
-    comment: string
-    userId: string //usuario que fez o comentario, pegar pelo token
-    createdAt: Date,
-    updatedAt: Date,
-}
+    id: string;
+    comment: string;
+    userId: string;
+    createdAt: Date;
+    updatedAt: Date;
+};

@@ -4,8 +4,11 @@ import { loginController } from "./sessions/login.controller";
 import { createUserController } from "./users/createUser.controller";
 import { listUserByIdController } from "./users/listUserById.controller";
 import { listUsersController } from "./users/listUsers.controller";
+import { patchUserController } from "./users/patchUser.controller";
 import { softDeleteUserController } from "./users/softDeleteUser.controller";
 import { listPetsController } from "./pets/listPetsController";
+import { listCommentsOnUserController } from "./comments/listCommentsOnUser.controller";
+import { listPetByIdController } from "./pets/listPetById.controller";
 
 export {
     loginController,
@@ -15,5 +18,8 @@ export {
     listUserByIdController,
     softDeleteUserController,
     createCommentController,
-    listPetsController
+    listCommentsOnUserController,
+    listPetsController,
+    listPetByIdController,
+    patchUserController
 };

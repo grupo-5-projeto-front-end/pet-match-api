@@ -10,6 +10,7 @@ import { likeResponseSchema } from "./likes/likesResponse.schema";
 import { commentRequestSchema } from "./comments/commentsRequest.schema";
 import { commentResponseSchema } from "./comments/commentsResponse.schema";
 import { userResponseSchema, userArraySchema } from "./users/userResponse.schema";
+import { userCommentResponseSchema } from "./users/userCommentResponse.schema";
 
 export {
     addressSchema,
@@ -24,5 +25,6 @@ export {
     likeRequestSchema,
     likeResponseSchema,
     commentRequestSchema,
-    commentResponseSchema
+    commentResponseSchema,
+    userCommentResponseSchema
 }
