@@ -26,6 +26,6 @@ export class Comments {
   @DeleteDateColumn()
   deletedAt: Date;
 
-  @ManyToOne(() => Users, (users) => users.comments)
+  @ManyToOne(() => Users, (users) => users.comments, {eager: true})
   user: Users;
 }

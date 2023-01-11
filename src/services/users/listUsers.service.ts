@@ -7,11 +7,12 @@ export const listUsersService = async () => {
 
     const users = await userRepo.find({
         relations: {
-            address: true
+            address: true,
+            comments: true
         }
     });
 
     const validatedArray = await userArraySchema.validate(users, {stripUnknown: true});
 
-    return validatedArray;
+    return users;
 };

@@ -6,6 +6,5 @@ export const commentResponseSchema:SchemaOf<IComments> = yup.object().shape({
     comment: yup.string().required(),
     userId: yup.string().required(),
     createdAt: yup.date().required(),
-    updatedAt: yup.date().required(),
-    deletedAt: yup.date()
+    updatedAt: yup.date().required()
 })

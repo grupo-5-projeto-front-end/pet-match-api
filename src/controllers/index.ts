@@ -1,3 +1,4 @@
+import { createCommentController } from "./comments/createComment.controller";
 import { loginController } from "./sessions/login.controller";
 import { createUserController } from "./users/createUser.controller";
 import { listUserByIdController } from "./users/listUserById.controller";
@@ -9,5 +10,6 @@ export {
     createUserController,
     listUsersController,
     listUserByIdController,
-    softDeleteUserController
+    softDeleteUserController,
+    createCommentController
 };

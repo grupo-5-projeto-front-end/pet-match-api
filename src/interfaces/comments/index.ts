@@ -1,13 +1,15 @@
-import { IUserResponse } from "../users"
-
 export interface ICommentsRequest{
-    comment:string
+    comment: string,
+    userId?: string
+}
+
+export interface ICommentsRequestDummy {
+    comment: string
 }
 
 export interface IComments{
-    comment:string
-    userId:string //usuario que fez o comentario, pegar pelo token
-    createdAt:Date,
-    updatedAt:Date,
-    deletedAt?: Date
+    comment: string
+    userId: string //usuario que fez o comentario, pegar pelo token
+    createdAt: Date,
+    updatedAt: Date,
 }

@@ -25,9 +25,7 @@ export const createUserService = async (body: IUserRequest) => {
     newUser.password = hashedPassword;
     await userRepo.save(newUser);
 
-    const validateResponse = await userResponseSchema.validate(newUser, {
-        stripUnknown: true
-    });
+    const validateResponse = await userResponseSchema.validate(newUser, {stripUnknown: true});
 
     return validateResponse;
 };
