@@ -41,7 +41,7 @@ describe("/pets", () => {
     expect(response.body).toHaveProperty("isActive");
     expect(response.body).toHaveProperty("createdAt");
     expect(response.body).toHaveProperty("updatedAt");
-    expect(response.body).toHaveProperty("deletedAt");
+    expect(response.body).not.toHaveProperty("deletedAt");
   });
 
   test("POST /pets -  should not be able to create pet without authentication", async () => {
@@ -76,12 +76,14 @@ describe("/pets", () => {
     expect(response.body).toHaveProperty("isActive");
     expect(response.body).toHaveProperty("createdAt");
     expect(response.body).toHaveProperty("updatedAt");
-    expect(response.body).toHaveProperty("deletedAt");
+    expect(response.body).not.toHaveProperty("deletedAt");
   });
 
   test("GET /pets/users/:id - Should be able to get all pets of a user", async () => {
     const loginRes = await request(app).post("/login").send(mockedLogin);
-    const userId = loginRes.body.user.id;
+
+    const user = await request(app).get("/users");
+    const userId = user.body[0].id;
 
     const response = await request(app)
       .get(`/pets/users/${userId}`)
@@ -114,7 +116,7 @@ describe("/pets", () => {
     expect(response.body).toHaveProperty("isActive");
     expect(response.body).toHaveProperty("createdAt");
     expect(response.body).toHaveProperty("updatedAt");
-    expect(response.body).toHaveProperty("deletedAt");
+    expect(response.body).not.toHaveProperty("deletedAt");
     expect(response.body.name).toEqual("Novo nome");
   });
 
