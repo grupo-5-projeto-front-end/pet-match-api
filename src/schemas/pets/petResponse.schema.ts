@@ -3,7 +3,7 @@ import { SchemaOf } from 'yup'
 import { IPetResponse } from '../../interfaces/pets'
 import { userResponseSchema } from '../users/userResponse.schema'
 
-export const petResponseSchema:SchemaOf<IPetResponse> = yup.object().shape({
+export const petResponseSchema:SchemaOf<any> = yup.object().shape({
     name: yup.string().required(),
     sex: yup.string().required(),
     category: yup.string().required(),
@@ -12,8 +12,7 @@ export const petResponseSchema:SchemaOf<IPetResponse> = yup.object().shape({
     bio: yup.string().required(),
     avatar: yup.string(),
     isActive: yup.boolean().required(),
-    user: userResponseSchema,
+    // user: userResponseSchema,
     updatedAt: yup.date().required(),
-    createdAt: yup.date().required(),
-    deletedAt: yup.date()
+    createdAt: yup.date().required()
 })

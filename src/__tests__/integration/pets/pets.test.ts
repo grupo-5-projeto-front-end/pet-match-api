@@ -23,7 +23,7 @@ describe("/pets", () => {
 
   test("POST /pets - Should be able to create a pet", async () => {
     const loginRes = await request(app).post("/login").send(mockedLogin);
-
+    
     const response = await request(app)
       .post("/pets")
       .send(mockedPet)
