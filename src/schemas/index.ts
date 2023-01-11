@@ -9,10 +9,13 @@ import { likeRequestSchema } from "./likes/likesRequest.schema";
 import { likeResponseSchema } from "./likes/likesResponse.schema";
 import { commentRequestSchema } from "./comments/commentsRequest.schema";
 import { commentResponseSchema } from "./comments/commentsResponse.schema";
+import { userResponseSchema, userArraySchema } from "./users/userResponse.schema";
 
 export {
     addressSchema,
     userRequestSchema,
+    userResponseSchema,
+    userArraySchema,
     loginSchema,
     updateUserResponseSchema,
     userUpdateRequestSchema,

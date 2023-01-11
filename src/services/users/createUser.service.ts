@@ -4,8 +4,9 @@ import { Addresses } from "../../entities/addressesEntity";
 import { Users } from "../../entities/usersEntity";
 import AppError from "../../errors/AppError";
 import { IUserRequest } from "../../interfaces/users";
+import { userResponseSchema } from "../../schemas";
 
-export const createUserService = async (body: IUserRequest): Promise<Users> => {
+export const createUserService = async (body: IUserRequest): Promise<any> => {
     const { email, address } = body;
     const { state, zipCode } = address;
     const userRepo = AppDataSource.getRepository(Users);
@@ -24,8 +25,9 @@ export const createUserService = async (body: IUserRequest): Promise<Users> => {
     newUser.password = hashedPassword;
     await userRepo.save(newUser);
 
-    delete newUser.password;
-    delete newUser.deletedAt;
+    const validateResponse = await userResponseSchema.validate(newUser, {
+        stripUnknown: true
+    });
 
-    return newUser;
+    return validateResponse;
 };
