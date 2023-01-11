@@ -10,7 +10,7 @@ describe("/users", () => {
 
   beforeAll(async () => {
     await AppDataSource.initialize()
-      .then((res) => (connection = res))
+      .then((res) => connection = res)
       .catch((err) => console.log(err));
   });
 
@@ -29,12 +29,13 @@ describe("/users", () => {
     expect(response.body).toHaveProperty("isActive")
     expect(response.body).toHaveProperty("createdAt")
     expect(response.body).toHaveProperty("updatedAt")
+    // expect(response.body).toHaveProperty("address")
 
-    expect(response.body.adress).toHaveProperty("city")
-    expect(response.body.adress).toHaveProperty("state")
-    expect(response.body.adress).toHaveProperty("street")
-    expect(response.body.adress).toHaveProperty("number")
-    expect(response.body.adress).toHaveProperty("zipCode")
+    expect(response.body.address).toHaveProperty("city")
+    expect(response.body.address).toHaveProperty("state")
+    expect(response.body.address).toHaveProperty("street")
+    expect(response.body.address).toHaveProperty("number")
+    expect(response.body.address).toHaveProperty("zipCode")
 
     expect(response.body).not.toHaveProperty("password")
 
@@ -77,23 +78,24 @@ describe("/users", () => {
     const token = `Bearer ${responseLogin.body.token}`
     
     const userUpdate = await request(app).get("/users").set("Authorization", token)
-
     const userId = userUpdate.body[0].id
 
     const response = await request(app).patch(`/users/${userId}`).set("Authorization",token).send(mockedUpdate)
-
     const userUpdated = await request(app).get("/users").set("Authorization", token)
 
     expect(response.status).toBe(200)
-    expect(userUpdated.body[0].name).toEqual("testeUserUpdate")
-    expect(userUpdated.body[0].email).toEqual("testeUserUpdate")
-    expect(userUpdated.body[0].avatar).toEqual("testeUserUpdate")
-    expect(userUpdated.body[0].avatar).toEqual("createdAt")
-    expect(userUpdated.body[0].avatar).toEqual("updatedAt")
+    expect(userUpdated.body[0].name).toEqual("usuarioTeste")
+    expect(userUpdated.body[0].email).toEqual("petmatch@mail.com")
+    expect(userUpdated.body[0].password).toEqual("123456")
+    expect(userUpdated.body[0].phone).toEqual("21971717171")
+    expect(userUpdated.body[0].avatar).toEqual("img")
     
     expect(userUpdated.body[0]).not.toHaveProperty("password")
 })
 
+test("PATCH /users/:id -  should not be able to update user without authentication", async()=>{
+  
+})
 
 
 

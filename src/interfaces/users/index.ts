@@ -4,9 +4,9 @@ export interface IUserRequest {
   name: string,
   email: string,
   password: string,
-  phone:string,
-  avatar:string,
-  adress: IAddressRequest
+  phone: string,
+  avatar: string,
+  address: IAddressRequest
 }
 
 export interface IUserResponse {
