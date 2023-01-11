@@ -1,6 +1,6 @@
 import { Router } from "express";
 import { createUserController, listUsersController } from "../controllers";
-import { verifyRequestPerSchema } from "../middleware";
+import { verifyRequestPerSchema, verifyUserIdParameter } from "../middleware";
 import { userRequestSchema } from "../schemas";
 
 export const usersRoutes = Router();
