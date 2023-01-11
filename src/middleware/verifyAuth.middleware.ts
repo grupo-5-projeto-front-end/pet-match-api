@@ -5,7 +5,7 @@ import { iJwtPayload } from "../interfaces/express"
 
 export const verifyAuth = async (req: Request, resp: Response, next: NextFunction) => {
     let token = req.headers.authorization;
-
+    console.log(token)
     if(!token) throw new AppError("Invalid Token", 401);
 
     token = token.split(' ')[1];

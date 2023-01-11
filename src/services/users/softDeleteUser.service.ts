@@ -11,14 +11,15 @@ export const softDeleteUserService = async (userId: string): Promise<void> => {
         },
         withDeleted: true
     })
+    
+    if(userToBeDeleted.isActive == false){
+        throw new AppError("This user has been deleted", 400)
+    }
 
     if(!userToBeDeleted){
         throw new AppError("User not found.", 404)
     }
 
-    if(userToBeDeleted.isActive == false){
-        throw new AppError("This user has been deleted", 400)
-    }
 
     await userRepo.softRemove(userToBeDeleted)
     const user = await userRepo.save({
