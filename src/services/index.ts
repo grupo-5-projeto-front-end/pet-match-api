@@ -4,6 +4,7 @@ import { createUserService } from "./users/createUser.service";
 import { listUserByIdService } from "./users/listUserById.service";
 import { listUsersService } from "./users/listUsers.service";
 import { softDeleteUserService } from "./users/softDeleteUser.service";
+import { listPetByIdService } from "./pets/listPetById.service";
 
 export {
     loginService,
@@ -11,5 +12,6 @@ export {
     listUsersService,
     listUserByIdService,
     softDeleteUserService,
-    createCommentService
+    createCommentService,
+    listPetByIdService
 };
