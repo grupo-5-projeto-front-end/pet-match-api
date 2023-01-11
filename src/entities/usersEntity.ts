@@ -52,6 +52,6 @@ export class Users {
   @OneToMany(() => Pets, (pets) => pets.user)
   pets: Pets[];
 
-  @OneToMany(() => Comments, (comments) => comments.user)
+  @OneToMany(() => Comments, (comments) => comments.user_)
   comments: Comments[];
-}
+};

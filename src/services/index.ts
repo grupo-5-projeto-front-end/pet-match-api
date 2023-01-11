@@ -1,3 +1,4 @@
+import { createCommentService } from "./comments/createComment.service";
 import { loginService } from "./sessions/login.service";
 import { createUserService } from "./users/createUser.service";
 import { listUserByIdService } from "./users/listUserById.service";
@@ -9,5 +10,6 @@ export {
     createUserService,
     listUsersService,
     listUserByIdService,
-    softDeleteUserService
+    softDeleteUserService,
+    createCommentService
 };

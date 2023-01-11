@@ -1,7 +1,7 @@
-import * as yup from 'yup'
-import { SchemaOf } from 'yup'
-import { ICommentsRequest } from '../../interfaces/comments'
+import * as yup from 'yup';
+import { SchemaOf } from 'yup';
+import { ICommentsRequestDummy } from '../../interfaces/comments';
 
-export const commentRequestSchema:SchemaOf<ICommentsRequest> = yup.object().shape({
+export const commentRequestSchema:SchemaOf<ICommentsRequestDummy> = yup.object().shape({
     comment: yup.string().required()
-})
+});
