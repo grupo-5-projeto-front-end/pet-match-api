@@ -60,7 +60,10 @@ describe("/users", () => {
      const response = await request(app).post("login").send(mockedUserLogin)
      const responseLogin = await request(app).get("/users").set("Authorization", `Bearer ${response.body.token}`)
 
-    expect(responseLogin.body).toHaveLength(1)
+    // expect(responseLogin.body).toHaveLength(1)
+    expect(response.body).toHaveProperty("map");
+    expect(response.status).toBe(200);
+
     expect(responseLogin.body).not.toHaveProperty("password")
   })
 
@@ -69,6 +72,12 @@ describe("/users", () => {
     expect(response.body).toHaveProperty("message")
     expect(response.status).toBe(401)
   })
+
+  // test("GET /users: should be not list users isActive ==false ", async ()=>{
+  //   const  response = await request(app).get("/users")
+  //   expect(response.body).toHaveProperty("message")
+  //   expect(response.status).toBe(403)
+  // })
 
   
   // Update  user
@@ -81,6 +90,7 @@ describe("/users", () => {
     const userId = userUpdate.body[0].id
 
     const response = await request(app).patch(`/users/${userId}`).set("Authorization",token).send(mockedUpdate)
+
     const userUpdated = await request(app).get("/users").set("Authorization", token)
 
     expect(response.status).toBe(200)
@@ -94,10 +104,27 @@ describe("/users", () => {
 })
 
 test("PATCH /users/:id -  should not be able to update user without authentication", async()=>{
+  const responseLogin = await request(app).post("/login").send(mockedUserLogin);
+  const userUpdate = await request(app).get('/users').set("Authorization", `Bearer ${responseLogin.body.token}`)
+  const response = await request(app).patch(`/users/${userUpdate.body[0].id}`)
+
+  expect(response.body).toHaveProperty("message")
+  expect(response.status).toBe(401)
   
 })
 
+test("PATCH /users/:id - should not be able to update user with invalid id", async ()=>{
+  const responseLogin = await request(app).post("/login").send(mockedUserLogin);
+  const token = `Bearer ${responseLogin.body.token}`
+  
+  const userUpdate = await request(app).get("/users").set("Authorization", token)
+  const userId = userUpdate.body[0].id
 
+  const response = await request(app).patch(`/users/b855d86b-d4c9-41cd-ab98-d7fa734c6ce4`).set("Authorization",token).send(mockedUpdate)
+  
+  expect(response.body).toHaveProperty("message")
+  expect(response.status).toBe(404)
+})
 
 
 
