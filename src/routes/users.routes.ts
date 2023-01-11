@@ -1,6 +1,5 @@
 import { Router } from "express";
-import { createUserController, listUserByIdController, listUsersController } from "../controllers";
-import { softDeleteUserController } from "../controllers/users/softDeleteUser.controller";
+import { createUserController, listUserByIdController, listUsersController, softDeleteUserController } from "../controllers";
 import { verifyAuth, verifyRequestPerSchema, verifyUserIdParameter } from "../middleware";
 import { userRequestSchema } from "../schemas";
 
