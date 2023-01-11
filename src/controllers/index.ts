@@ -7,15 +7,16 @@ import { listUsersController } from "./users/listUsers.controller";
 import { patchUserController } from "./users/patchUser.controller";
 import { softDeleteUserController } from "./users/softDeleteUser.controller";
 import { listPetsController } from "./pets/listPetsController";
+import { listPetByIdController } from "./pets/listPetById.controller";
 
 export {
-  loginController,
-  createUserController,
-  listUsersController,
-  createPetController,
-  listUserByIdController,
-  softDeleteUserController,
-  listPetsController,
-  createCommentController,
-  patchUserController
+    loginController,
+    createUserController,
+    listUsersController,
+    createPetController,
+    listUserByIdController,
+    softDeleteUserController,
+    createCommentController,
+    listPetsController,
+    listPetByIdController
 };
