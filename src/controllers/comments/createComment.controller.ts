@@ -1,6 +1,5 @@
 import { Request, Response } from "express";
 import { ICommentsRequest } from "../../interfaces/comments";
-import { IUserRequest } from "../../interfaces/users";
 import { createCommentService } from "../../services";
 
 export const createCommentController = async (req: Request, res: Response) => {

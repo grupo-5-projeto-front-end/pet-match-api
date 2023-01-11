@@ -1,7 +1,7 @@
 import * as yup from 'yup'
 import { SchemaOf } from 'yup'
 import { IUserResponse } from '../../interfaces/users'
-import { addressSchema } from '../index'
+import { addressSchema, commentResponseSchema } from '../index'
 
 export const userResponseSchema: SchemaOf<IUserResponse> = yup.object().shape({
     id: yup.string().required(),

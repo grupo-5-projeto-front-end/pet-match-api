@@ -49,4 +49,4 @@ export class Pets {
 
   @ManyToOne(() => Users, (users) => users.pets)
   user: Users;
-}
+};

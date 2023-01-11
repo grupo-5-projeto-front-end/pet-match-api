@@ -23,4 +23,4 @@ export class Addresses {
 
   @OneToOne(() => Users, (users) => users.address)
   user: Users;
-}
+};
