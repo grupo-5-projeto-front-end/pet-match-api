@@ -3,19 +3,18 @@ import { AppDataSource } from "../../data-source";
 import { Comments } from "../../entities/commentsEntity";
 import { Users } from "../../entities/usersEntity";
 import { ICommentsRequest } from "../../interfaces/comments";
+import { commentResponseSchema } from "../../schemas";
 
 export const createCommentService = async (body: ICommentsRequest, targetId: string, commenterId: string) => {
-    body.userId = commenterId;
-    console.log(body)
+    body.userId = commenterId
     
     const userRepo = AppDataSource.getRepository(Users);
     const commentRepo = AppDataSource.getRepository(Comments);
 
     const fullComment = commentRepo.create(body);
-    console.log(fullComment)
     const createdComment = await commentRepo.save(fullComment);
 
-    const user: any = await userRepo.findOne({
+    const user = await userRepo.findOne({
         where: {
             id: targetId
         },
@@ -26,10 +25,7 @@ export const createCommentService = async (body: ICommentsRequest, targetId: str
     user.comments = [...user.comments, createdComment];
     await userRepo.save(user)
 
-    const returnComment: any = fullComment
-    returnComment.userId = commenterId
+    const validateResponse = await commentResponseSchema.validate(fullComment, {stripUnknown: true});
 
-    // const validateResponse = await commentResponseSchema.validate(fullComment, {stripUnknown: true});
-
-    return returnComment
+    return validateResponse
 }
