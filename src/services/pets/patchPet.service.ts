@@ -18,7 +18,7 @@ export const patchPetService = async (
   });
 
   if (!pet) throw new AppError("Pet not found", 404);
-  if (pet.user.id !== userId) throw new AppError("no access permission");
+  if (pet.user.id !== userId) throw new AppError("no access permission",403);
 
   const PetUpdate = petRepo.create({
     ...pet,

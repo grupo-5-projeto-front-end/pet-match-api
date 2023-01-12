@@ -1,6 +1,6 @@
 import { Router } from "express";
 
-import { listPetsController, createPetController, listPetByIdController, patchUPetController } from "../controllers";
+import { listPetsController, createPetController, listPetByIdController, patchUPetController, softDeletePetControlle } from "../controllers";
 import { verifyAuth, verifyPetIdParameter, verifyRequestPerSchema } from "../middleware";
 
 import { petRequestSchema, petUpdateRequestSchema } from "../schemas";
@@ -13,4 +13,5 @@ petsRoutes.get("/pets/:id", verifyPetIdParameter, listPetByIdController);
 
 petsRoutes.post("/pets",verifyRequestPerSchema(petRequestSchema), verifyAuth, createPetController) 
 petsRoutes.patch(`/pets/:id`, verifyPetIdParameter, verifyRequestPerSchema(petUpdateRequestSchema), verifyAuth, patchUPetController) 
+petsRoutes.delete(`/pets/:id`, verifyPetIdParameter, verifyAuth, softDeletePetControlle) 
 
