@@ -1,9 +1,8 @@
 import { Request, Response } from "express";
 import { IPetRequest } from "../../interfaces/pets";
-import { patchPetService } from "../../services/pets/patchPet.service";
+import { patchPetService } from "../../services";
 
 export const patchUPetController = async(req: Request, res:Response)=>{
-
     const body: IPetRequest = req.body
     const {id} = req.params
     const userId = req.user.id

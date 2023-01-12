@@ -1,15 +1,15 @@
 import { AppDataSource } from "../../data-source";
 import { Pets } from "../../entities/petsEntity";
-import { Users } from "../../entities/usersEntity";
 import AppError from "../../errors/AppError";
-import { IPetRequest } from "../../interfaces/pets";
+import { IPetRequest, IPetResponse } from "../../interfaces/pets";
 import { petResponseSchema } from "../../schemas";
+
 
 export const patchPetService = async (
   body: IPetRequest,
   petId: string,
   userId: string
-) => {
+):Promise<IPetResponse> => {
   const petRepo = AppDataSource.getRepository(Pets);
 
   const pet = await petRepo.findOne({

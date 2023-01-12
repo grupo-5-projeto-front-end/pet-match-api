@@ -8,6 +8,7 @@ import { listUsersService } from "./users/listUsers.service";
 import { patchUserService } from "./users/patchUser.service";
 import { softDeleteUserService } from "./users/softDeleteUser.service";
 import { listPetByIdService } from "./pets/listPetById.service";
+import { patchPetService } from "./pets/patchPet.service";
 
 export {
     loginService,
@@ -19,5 +20,6 @@ export {
     listCommentsOnUserService,
     listPetsService,
     listPetByIdService,
-    patchUserService
+    patchUserService,
+    patchPetService
 };
