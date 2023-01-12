@@ -100,7 +100,7 @@ describe("/pets", () => {
     const petId = pets.body[0].id;
 
     const response = await request(app)
-      .patch(`/users/${petId}`)
+      .patch(`/pets/${petId}`)
       .send({ name: "Novo nome" })
       .set("Authorization", `Bearer ${loginRes.body.token}`);
 

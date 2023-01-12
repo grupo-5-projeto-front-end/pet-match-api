@@ -3,7 +3,7 @@ import { userRequestSchema } from "./users/userRequest.schema";
 import { userUpdateRequestSchema } from "./users/userUpdateResquest.schema";
 import { updateUserResponseSchema } from "./users/userUpdateResponse.schema";
 import { loginSchema } from "./users/userLogin.schema";
-import { petRequestSchema } from "./pets/petRequest.schema";
+import { petRequestSchema, petUpdateRequestSchema } from "./pets/petRequest.schema";
 import { petResponseSchema } from "./pets/petResponse.schema";
 import { likeRequestSchema } from "./likes/likesRequest.schema";
 import { likeResponseSchema } from "./likes/likesResponse.schema";
@@ -26,5 +26,6 @@ export {
     likeResponseSchema,
     commentRequestSchema,
     commentResponseSchema,
-    userCommentResponseSchema
+    userCommentResponseSchema,
+    petUpdateRequestSchema
 }
