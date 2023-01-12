@@ -1,0 +1,16 @@
+{
+  "compilerOptions": {
+    "target": "es2016",                                  
+    "experimentalDecorators": true,                   
+    "emitDecoratorMetadata": true,                    
+    "module": "commonjs",                                
+    "moduleResolution": "node",                       
+    "typeRoots": ["src/@types", "node_modules/@types"],                                 
+    "outDir": "./dist",  //deploy                                 
+    "esModuleInterop": true,                             
+    "forceConsistentCasingInFileNames": true,            
+    "strict": false,                                    
+    "strictPropertyInitialization": false,             
+    "skipLibCheck": true                                
+  }
+}
