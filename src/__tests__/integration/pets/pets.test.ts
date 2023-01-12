@@ -76,15 +76,16 @@ describe("/pets", () => {
     expect(response.body).not.toHaveProperty("deletedAt");
   });
 
-  test("GET /pets/users/:id - Should be able to get all pets of a user", async () => {
-    const loginRes = await request(app).post("/login").send(mockedUserLogin);
+  test("GET /pets/user/:id - Should be able to get all pets of a user", async () => {
+   const loginRes = await request(app).post("/login").send(mockedUserLogin);
 
     const user = await request(app).get("/users")
+    
     const userId = user.body[0].id;
-
-    const response = await request(app).get(`/pets/${userId}`).set("Authorization", `Bearer ${loginRes.body.token}`);
-    console.log(response.body)
-    expect(response.status).toBe(200);
+    
+    
+    const response = await request(app).get(`/pets/user/${userId}`).set("Authorization", `Bearer ${loginRes.body.token}`);
+     expect(response.status).toBe(200);
     expect(response.body).toHaveProperty("id")
     expect(response.body).toHaveProperty("name")
     expect(response.body).toHaveProperty("email")
