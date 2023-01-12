@@ -146,23 +146,15 @@ describe("/comments", () => {
     expect(response.body).toHaveProperty("message");
   });
 
-  test("DELETE /comments - Should be able to delete a comment", async () => {
+  test("DELETE /comments - Should NOT be able to delete a comment without authentication", async () => {
     const loginRes = await request(app).post("/login").send(mockedUserLogin);
     const getuser = await request(app).get(`/users`);
-    const comments = await request(app).get(`/comments/${getuser.body[1].id}`);
-    const commentId = comments.body[0].id;
 
-    const response = await request(app)
-      .delete(`/comments/${commentId}`)
+    const comments = await request(app)
+      .get(`/comments/${getuser.body[1].id}`)
       .set("Authorization", `Bearer ${loginRes.body.token}`);
 
-    expect(response.status).toBe(204);
-  });
-
-  test("DELETE /comments - Should NOT be able to delete a comment without authentication", async () => {
-    const getuser = await request(app).get(`/users`);
-    const comments = await request(app).get(`/comments/${getuser.body[1].id}`);
-    const commentId = comments.body[0].id;
+    const commentId = comments.body.comments[0].id;
 
     const response = await request(app).delete(`/comments/${commentId}`);
 
@@ -179,5 +171,26 @@ describe("/comments", () => {
 
     expect(response.status).toBe(404);
     expect(response.body).toHaveProperty("message");
+  });
+
+  test("DELETE /comments - Should be able to delete a comment", async () => {
+    const loginRes = await request(app).post("/login").send(mockedUserLogin);
+    const getuser = await request(app).get(`/users`);
+
+    const comments = await request(app)
+      .get(`/comments/${getuser.body[1].id}`)
+      .set("Authorization", `Bearer ${loginRes.body.token}`);
+
+    const commentId = comments.body.comments[0].id;
+
+    const loginResSecond = await request(app)
+      .post("/login")
+      .send(mockedSegundLogin);
+
+    const response = await request(app)
+      .delete(`/comments/${commentId}`)
+      .set("Authorization", `Bearer ${loginResSecond.body.token}`);
+
+    expect(response.status).toBe(204);
   });
 });
