@@ -9,11 +9,17 @@ import { userResponseSchema } from "../../schemas";
 export const createUserService = async (body: IUserRequest) => {
     const { email, address } = body;
     const { state, zipCode } = address;
+
     const userRepo = AppDataSource.getRepository(Users);
     const addressRepo = AppDataSource.getRepository(Addresses);
 
-    const user = await userRepo.findOneBy({email: email});
+    const user = await userRepo.findOne({
+        where: {email: email},
+        withDeleted: true
+    });
+    if (user && !user.isActive) throw new AppError ("User already exists, but is inactive", 409);
     if (user) throw new AppError ("User already exists", 409);
+    
     if (zipCode.length !== 8) throw new AppError ("Invalid zip code", 400);
     if (state.length !== 2) throw new AppError ("Invalid state. Can only have 2 characters", 400);
 

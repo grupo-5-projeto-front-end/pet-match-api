@@ -3,6 +3,7 @@ import {
   createCommentController,
   listCommentsOnUserController,
   patchCommentController,
+  softDeleteCommentController,
 } from "../controllers";
 import {
   verifyAuth,
@@ -35,4 +36,11 @@ commentsRoutes.patch(
   verifyAuth,
   verifyRequestPerSchema(commentRequestSchema),
   patchCommentController
+);
+
+commentsRoutes.delete(
+  "/comments/:id",
+  verifyCommentIdParameter,
+  verifyAuth,
+  softDeleteCommentController
 );

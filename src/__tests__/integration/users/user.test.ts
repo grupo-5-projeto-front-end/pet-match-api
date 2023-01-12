@@ -65,9 +65,7 @@ describe("/users", () => {
 
   })
 
-  test("GET /users/<id> -> Deve ser capaz de listar um usuário", async () => {
-    // const loginRes = await request(app).post("/login").send(mockedUserLogin);
-  
+  test("GET /users/<id> -> Deve ser capaz de listar um usuário", async () => {  
     const getuser = await request(app).get(baseURL)
     const userId = getuser.body[0].id
 

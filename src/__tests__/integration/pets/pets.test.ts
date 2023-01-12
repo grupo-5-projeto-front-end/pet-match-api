@@ -24,10 +24,7 @@ describe("/pets", () => {
   test("POST /pets - Should be able to create a pet", async () => {
   
     const loginRes = await request(app).post("/login").send(mockedUserLogin);
-    const response = await request(app)
-      .post("/pets")
-      .send(mockedPet)
-      .set("Authorization", `Bearer ${loginRes.body.token}`);
+    const response = await request(app).post("/pets").send(mockedPet).set("Authorization", `Bearer ${loginRes.body.token}`);
 
     expect(response.status).toBe(201);
     expect(response.body).toHaveProperty("id");
@@ -79,18 +76,28 @@ describe("/pets", () => {
     expect(response.body).not.toHaveProperty("deletedAt");
   });
 
-  test("GET /pets/users/:id - Should be able to get all pets of a user", async () => {
-    const loginRes = await request(app).post("/login").send(mockedUserLogin);
+  test("GET /pets/user/:id - Should be able to get all pets of a user", async () => {
+   const loginRes = await request(app).post("/login").send(mockedUserLogin);
 
-    const user = await request(app).get("/users");
+    const user = await request(app).get("/users")
+    
     const userId = user.body[0].id;
+    
+    
+    const response = await request(app).get(`/pets/user/${userId}`).set("Authorization", `Bearer ${loginRes.body.token}`);
+     expect(response.status).toBe(200);
+    expect(response.body).toHaveProperty("id")
+    expect(response.body).toHaveProperty("name")
+    expect(response.body).toHaveProperty("email")
+    expect(response.body).toHaveProperty("phone")
+    expect(response.body).toHaveProperty("avatar")
+    expect(response.body).toHaveProperty("isActive")
+    expect(response.body).toHaveProperty("createdAt")
+    expect(response.body).toHaveProperty("updatedAt")
+    expect(response.body).toHaveProperty("pets")
 
-    const response = await request(app)
-      .get(`/pets/users/${userId}`)
-      .set("Authorization", `Bearer ${loginRes.body.token}`);
-
-    expect(response.status).toBe(200);
-    expect(response.body).toHaveProperty("map");
+    expect(response.body).not.toHaveProperty("password")
+    expect(response.body).not.toHaveProperty("deletedAt")
   });
 
   test("PATCH /pets/:id - Should be able to update pet information", async () => {
@@ -100,9 +107,7 @@ describe("/pets", () => {
     const petId = pets.body[0].id;
 
     const response = await request(app)
-      .patch(`/pets/${petId}`)
-      .send({ name: "Novo nome" })
-      .set("Authorization", `Bearer ${loginRes.body.token}`);
+      .patch(`/pets/${petId}`).send({ name: "Novo nome" }).set("Authorization", `Bearer ${loginRes.body.token}`);
 
     expect(response.status).toBe(200);
     expect(response.body).toHaveProperty("id");
