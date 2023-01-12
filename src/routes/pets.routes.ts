@@ -1,6 +1,6 @@
 import { Router } from "express";
 
-import { listPetsController, createPetController, listPetByIdController, patchUPetController, softDeletePetController } from "../controllers";
+import { listPetsController, createPetController, listPetByIdController, listPetsByUserController, patchUPetController, softDeletePetController } from "../controllers";
 import { verifyAuth, verifyPetIdParameter, verifyRequestPerSchema } from "../middleware";
 
 import { petRequestSchema, petUpdateRequestSchema } from "../schemas";
@@ -9,6 +9,7 @@ export const petsRoutes = Router();
 
 petsRoutes.get("/pets", listPetsController);
 petsRoutes.get("/pets/:id", verifyPetIdParameter, listPetByIdController);
+petsRoutes.get("/pets/user/:id", listPetsByUserController);
 
 
 petsRoutes.post("/pets",verifyRequestPerSchema(petRequestSchema), verifyAuth, createPetController) 

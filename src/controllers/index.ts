@@ -9,6 +9,7 @@ import { softDeleteUserController } from "./users/softDeleteUser.controller";
 import { listPetsController } from "./pets/listPetsController";
 import { listCommentsOnUserController } from "./comments/listCommentsOnUser.controller";
 import { listPetByIdController } from "./pets/listPetById.controller";
+import { listPetsByUserController} from "./pets/listPetsByUser.controller"
 import { patchUPetController } from "./pets/patchPet.controller";
 import { patchCommentController } from "./comments/patchComment.controller";
 import { softDeletePetController } from "./pets/softDeletePet.controller";
@@ -25,6 +26,7 @@ export {
   listCommentsOnUserController,
   listPetsController,
   listPetByIdController,
+  listPetsByUserController,
   patchUserController,
   patchUPetController,
   patchCommentController,
