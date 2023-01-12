@@ -12,3 +12,12 @@ export const petRequestSchema:SchemaOf<IPetRequest> = yup.object().shape({
     bio: yup.string().required(),
     avatar: yup.string(),
 })
+export const petUpdateRequestSchema:SchemaOf<IPetRequest> = yup.object().shape({
+    name: yup.string(),
+    sex: yup.string(),
+    category: yup.string(),
+    breed: yup.string(),
+    age: yup.string(),
+    bio: yup.string(),
+    avatar: yup.string(),
+})
