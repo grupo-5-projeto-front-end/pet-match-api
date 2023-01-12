@@ -1,18 +1,20 @@
 import { AppDataSource } from "../../data-source";
 import { Pets } from "../../entities/petsEntity";
+import { Users } from "../../entities/usersEntity";
 import { petResponseSchema } from "../../schemas";
+import { userPetsResponseSchema } from "../../schemas/pets/petResponse.schema";
 
 export const listPetsByUserService = async (id: string) => {
-    const petsRepo = AppDataSource.getRepository(Pets);
+    const userRepo = AppDataSource.getRepository(Users);
+    
+    const user = await userRepo.findOne({
+        where:{id:id},
+        relations:{pets:true}
+    })
+  
+    const validateResponse = await userPetsResponseSchema.validate(user, {
+        stripUnknown: true,
+      });
 
-    const pets = await petsRepo.find({
-        where: {
-            id
-        }
-       
-    });
-
-    const validateArray = await petResponseSchema.validate(pets);
-
-    return validateArray;
+    return validateResponse
 };
