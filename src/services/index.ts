@@ -10,18 +10,20 @@ import { softDeleteUserService } from "./users/softDeleteUser.service";
 import { listPetByIdService } from "./pets/listPetById.service";
 import { patchPetService } from "./pets/patchPet.service";
 import { softDeletePetService } from "./pets/softDeletePet.service";
-export {
-    loginService,
-    createUserService,
-    listUsersService,
-    listUserByIdService,
-    softDeleteUserService,
-    createCommentService,
-    listCommentsOnUserService,
-    listPetsService,
-    listPetByIdService,
-    patchUserService,
-    patchPetService,
-    softDeletePetService,
+import { patchCommentService } from "./comments/patchComment.service";
 
+export {
+  loginService,
+  createUserService,
+  listUsersService,
+  listUserByIdService,
+  softDeleteUserService,
+  createCommentService,
+  listCommentsOnUserService,
+  listPetsService,
+  listPetByIdService,
+  patchUserService,
+  patchPetService,
+  patchCommentService,
+  softDeletePetService,
 };
