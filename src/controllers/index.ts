@@ -10,18 +10,20 @@ import { listPetsController } from "./pets/listPetsController";
 import { listCommentsOnUserController } from "./comments/listCommentsOnUser.controller";
 import { listPetByIdController } from "./pets/listPetById.controller";
 import { patchUPetController } from "./pets/patchPet.controller";
+import { patchCommentController } from "./comments/patchComment.controller";
 
 export {
-    loginController,
-    createUserController,
-    listUsersController,
-    createPetController,
-    listUserByIdController,
-    softDeleteUserController,
-    createCommentController,
-    listCommentsOnUserController,
-    listPetsController,
-    listPetByIdController,
-    patchUserController,
-    patchUPetController
+  loginController,
+  createUserController,
+  listUsersController,
+  createPetController,
+  listUserByIdController,
+  softDeleteUserController,
+  createCommentController,
+  listCommentsOnUserController,
+  listPetsController,
+  listPetByIdController,
+  patchUserController,
+  patchUPetController,
+  patchCommentController,
 };
