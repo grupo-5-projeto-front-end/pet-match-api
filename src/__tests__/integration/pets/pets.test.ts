@@ -82,7 +82,8 @@ describe("/pets", () => {
     const user = await request(app).get("/users")
     const userId = user.body[0].id;
 
-    const response = await request(app).get(`/pets/${userId}`).set("Authorization", `Bearer ${loginRes.body.token}`);
+    const response = await request(app).get(`/pets/${userId}`)
+    .set("Authorization", `Bearer ${loginRes.body.token}`);
     console.log(response.body)
     expect(response.status).toBe(200);
     expect(response.body).toHaveProperty("id")
