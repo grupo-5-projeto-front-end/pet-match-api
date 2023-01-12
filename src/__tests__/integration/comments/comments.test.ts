@@ -99,8 +99,6 @@ describe("/comments", () => {
       .get(`/comments/${getuser.body[1].id}`)
       .set("Authorization", `Bearer ${loginRes.body.token}`);
 
-    console.log(comments.body);
-
     const commentId = comments.body.comments[0].id;
     const loginResSecond = await request(app)
       .post("/login")
