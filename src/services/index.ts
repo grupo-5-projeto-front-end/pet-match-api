@@ -14,6 +14,7 @@ import { softDeletePetService } from "./pets/softDeletePet.service";
 import { patchCommentService } from "./comments/patchComment.service";
 import { softDeleteCommentService } from "./comments/softDeleteComment.service";
 import { createLikeService } from "./likes/createLike.service";
+import { deleteLikeService } from "./likes/deleteLike.service";
 
 export {
   loginService,
@@ -32,4 +33,5 @@ export {
   softDeletePetService,
   softDeleteCommentService,
   createLikeService,
+  deleteLikeService,
 };
