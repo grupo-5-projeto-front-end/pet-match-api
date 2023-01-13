@@ -4,9 +4,11 @@ import {
   DeleteDateColumn,
   Entity,
   ManyToOne,
+  OneToMany,
   PrimaryGeneratedColumn,
   UpdateDateColumn,
 } from "typeorm";
+import { Likes } from "./likesEntity";
 import { Users } from "./usersEntity";
 
 @Entity("pets")
@@ -49,4 +51,7 @@ export class Pets {
 
   @ManyToOne(() => Users, (users) => users.pets)
   user: Users;
-};
+
+  @OneToMany(() => Likes, (likes) => likes.pet)
+  likes: Likes[];
+}
