@@ -15,6 +15,7 @@ import { patchCommentController } from "./comments/patchComment.controller";
 import { softDeletePetController } from "./pets/softDeletePet.controller";
 import { softDeleteCommentController } from "./comments/softDeleteComment.controller";
 import { createLikeController } from "./likes/createLike.controller";
+import { deleteLikeController } from "./likes/deleteLike.controller";
 
 export {
   loginController,
@@ -34,4 +35,5 @@ export {
   softDeletePetController,
   softDeleteCommentController,
   createLikeController,
+  deleteLikeController,
 };
