@@ -10,5 +10,5 @@ export const createLikeController = async (
 
   const newLike = await createLikeService(userId, petId);
 
-  return res.status(201).json(newLike);
+  return res.status(204).json(newLike);
 };
