@@ -1,8 +1,5 @@
-import exp from "constants";
 import * as yup from "yup";
 import { SchemaOf } from "yup";
-import { IPetResponse } from "../../interfaces/pets";
-import { userResponseSchema } from "../users/userResponse.schema";
 
 export const petResponseSchema: SchemaOf<any> = yup.object().shape({
   id: yup.string().required(),
@@ -18,6 +15,7 @@ export const petResponseSchema: SchemaOf<any> = yup.object().shape({
   createdAt: yup.date().required(),
   likes: yup.array().notRequired(),
 });
+
 export const userPetsResponseSchema = yup.object().shape({
   id: yup.string().required(),
   name: yup.string().required(),

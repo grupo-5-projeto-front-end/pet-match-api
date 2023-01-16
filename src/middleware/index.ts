@@ -5,9 +5,9 @@ import { verifyRequestPerSchema } from "./verifyRequestPerSchema.middleware";
 import { verifyUserIdParameter } from "./verifyUserIdParameter.middleware";
 
 export {
-    verifyRequestPerSchema,
-    verifyAuth,
-    verifyUserIdParameter,
-    verifyPetIdParameter,
-    verifyCommentIdParameter
+  verifyRequestPerSchema,
+  verifyAuth,
+  verifyUserIdParameter,
+  verifyPetIdParameter,
+  verifyCommentIdParameter,
 };

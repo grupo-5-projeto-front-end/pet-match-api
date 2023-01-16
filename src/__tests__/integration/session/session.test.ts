@@ -11,9 +11,7 @@ describe("/login", () => {
     await AppDataSource.initialize()
       .then((res) => connection = res)
       .catch((err) => console.log(err));
-
     await request(app).post("/users").send(mockedUser);
-    //criar antes de logar
   });
 
   afterAll(async () => {
@@ -46,4 +44,4 @@ describe("/login", () => {
     expect(response.status).toBe(403);
   });
 
-}); // end describe
+});

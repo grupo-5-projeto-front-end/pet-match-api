@@ -4,12 +4,11 @@ import AppError from "../../errors/AppError";
 import { IPetRequest, IPetResponse } from "../../interfaces/pets";
 import { petResponseSchema } from "../../schemas";
 
-
 export const patchPetService = async (
   body: IPetRequest,
   petId: string,
   userId: string
-):Promise<IPetResponse> => {
+): Promise<IPetResponse> => {
   const petRepo = AppDataSource.getRepository(Pets);
 
   const pet = await petRepo.findOne({
@@ -17,8 +16,13 @@ export const patchPetService = async (
     relations: { user: true },
   });
 
-  if (!pet) throw new AppError("Pet not found", 404);
-  if (pet.user.id !== userId) throw new AppError("no access permission",403);
+  if (!pet){
+    throw new AppError("Pet not found", 404);
+  }
+  
+  if (pet.user.id !== userId){
+    throw new AppError("no access permission", 403);
+  }
 
   const PetUpdate = petRepo.create({
     ...pet,

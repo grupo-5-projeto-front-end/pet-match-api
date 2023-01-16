@@ -13,12 +13,12 @@ likesRoutes.post(
   verifyPetIdParameter,
   verifyAuth,
   createLikeController
-); //ID passado por parâmetro, deve ser do pet que está recebendo o like
+);
 
 likesRoutes.delete("/likes/:id", verifyAuth, deleteLikeController);
 likesRoutes.get(
-  "/likes/:id",
-  verifyPetIdParameter,
+  "likes/:id",
   verifyAuth,
+  verifyPetIdParameter,
   listLikesController
 );

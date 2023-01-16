@@ -19,6 +19,5 @@ export const softDeleteCommentService = async (
   }
 
   await commentsRepo.softRemove(comment);
-
   return {};
 };

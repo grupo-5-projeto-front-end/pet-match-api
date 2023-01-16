@@ -10,7 +10,6 @@ export const verifyRequestPerSchema =
         abortEarly: false,
         stripUnknown: true,
       });
-
       req.body = validate;
 
       return next();
@@ -18,5 +17,3 @@ export const verifyRequestPerSchema =
       throw new AppError(error.errors, 401);
     }
   };
-
-//Quando utilizar esse middleware nas rotas, ele precisa ser passado como argumento para as rotas
