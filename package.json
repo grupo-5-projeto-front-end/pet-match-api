@@ -29,7 +29,6 @@
   "dependencies": {
     "@types/jest": "^29.2.5",
     "@types/supertest": "^2.0.12",
-    "supertest": "^6.3.3",
     "bcryptjs": "^2.4.3",
     "cross-env": "^7.0.3",
     "dotenv": "^16.0.1",
@@ -38,6 +37,7 @@
     "jsonwebtoken": ">=9.0.0",
     "pg": "^8.7.3",
     "reflect-metadata": "^0.1.13",
+    "supertest": "^6.3.3",
     "ts-node": "^10.9.1",
     "typeorm": "^0.3.6",
     "yup": "^0.32.11"

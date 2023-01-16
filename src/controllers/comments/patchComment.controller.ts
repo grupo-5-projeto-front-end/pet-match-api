@@ -7,8 +7,6 @@ export const patchCommentController = async (
 ): Promise<Response> => {
   const userId = req.user.id;
   const commentId = req.params.id;
-
   const comment = await patchCommentService(req.body, userId, commentId);
-
   return res.status(200).json(comment);
 };

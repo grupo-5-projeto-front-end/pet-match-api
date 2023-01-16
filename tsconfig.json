@@ -6,7 +6,7 @@
     "module": "commonjs",                                
     "moduleResolution": "node",                       
     "typeRoots": ["src/@types", "node_modules/@types"],                                 
-    "outDir": "./dist",  //deploy                                 
+    "outDir": "./dist",                                 
     "esModuleInterop": true,                             
     "forceConsistentCasingInFileNames": true,            
     "strict": false,                                    

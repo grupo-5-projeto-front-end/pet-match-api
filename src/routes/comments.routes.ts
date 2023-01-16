@@ -21,7 +21,7 @@ commentsRoutes.post(
   verifyAuth,
   verifyRequestPerSchema(commentRequestSchema),
   createCommentController
-); //Id passado é do USUÁRIO a ser comentado
+);
 
 commentsRoutes.get(
   "/comments/:id",

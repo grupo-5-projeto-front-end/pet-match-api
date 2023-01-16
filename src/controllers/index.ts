@@ -9,11 +9,14 @@ import { softDeleteUserController } from "./users/softDeleteUser.controller";
 import { listPetsController } from "./pets/listPetsController";
 import { listCommentsOnUserController } from "./comments/listCommentsOnUser.controller";
 import { listPetByIdController } from "./pets/listPetById.controller";
-import { listPetsByUserController} from "./pets/listPetsByUser.controller"
+import { listPetsByUserController } from "./pets/listPetsByUser.controller";
 import { patchUPetController } from "./pets/patchPet.controller";
 import { patchCommentController } from "./comments/patchComment.controller";
 import { softDeletePetController } from "./pets/softDeletePet.controller";
 import { softDeleteCommentController } from "./comments/softDeleteComment.controller";
+import { listLikesController } from "./likes/listLikes.controller";
+import { createLikeController } from "./likes/createLike.controller";
+import { deleteLikeController } from "./likes/deleteLike.controller";
 
 export {
   loginController,
@@ -32,4 +35,7 @@ export {
   patchCommentController,
   softDeletePetController,
   softDeleteCommentController,
+  listLikesController,
+  createLikeController,
+  deleteLikeController,
 };
