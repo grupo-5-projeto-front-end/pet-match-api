@@ -12,4 +12,4 @@ likesRoutes.post(
 ); //ID passado por parâmetro, deve ser do pet que está recebendo o like
 
  likesRoutes.delete("/likes/:id",verifyAuth, deleteLikeController )
- likesRoutes.get("likes/:id", verifyAuth, listLikesController)
+ likesRoutes.get("likes/:id", verifyAuth, verifyPetIdParameter, listLikesController)
