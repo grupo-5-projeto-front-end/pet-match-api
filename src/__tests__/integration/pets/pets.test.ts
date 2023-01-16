@@ -43,7 +43,7 @@ describe("/pets", () => {
     expect(response.body).not.toHaveProperty("deletedAt");
   });
 
-  test("POST /pets -  should not be able to create pet without authentication", async () => {
+  test("POST /pets -  Should not be able to create pet without authentication", async () => {
     const response = await request(app).post("/pets").send(mockedPet);
 
     expect(response.status).toBe(401);
@@ -80,7 +80,6 @@ describe("/pets", () => {
 
   test("GET /pets/user/:id - Should be able to get all pets of a user", async () => {
     const loginRes = await request(app).post("/login").send(mockedUserLogin);
-
     const user = await request(app).get("/users");
     const userId = user.body[0].id;
 

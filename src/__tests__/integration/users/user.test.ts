@@ -24,7 +24,7 @@ describe("/users", () => {
     await connection.destroy();
   });
 
-  test("Post/user Should be able to create a new user", async () => {
+  test("POST /users - Should be able to create a new user", async () => {
     const response = await request(app).post(baseURL).send(mockedUser);
 
     expect(response.body).toHaveProperty("id");
@@ -51,20 +51,20 @@ describe("/users", () => {
     expect(response.status).toBe(201);
   });
 
-  test("Post/user should not be able create user already exists", async () => {
+  test("POST /users - Should not be able create user already exists", async () => {
     const response = await request(app).post(baseURL).send(mockedUser);
     expect(response.body).toHaveProperty("message");
     expect(response.status).toBe(409);
   });
 
-  test("GET /users: Should be able list users", async () => {
+  test("GET /users - Should be able list users", async () => {
     const response = await request(app).get(baseURL);
 
     expect(response.body).toHaveProperty("map");
     expect(response.status).toBe(200);
   });
 
-  test("GET /users/<id> -> Deve ser capaz de listar um usuário", async () => {
+  test("GET /users/:id - Should be to list a specific user ", async () => {
     const getuser = await request(app).get(baseURL);
     const userId = getuser.body[0].id;
     const response = await request(app).get(`${baseURL}/${userId}`);
@@ -84,7 +84,7 @@ describe("/users", () => {
     expect(response.status).toBe(200);
   });
 
-  test("PATCH /users/:id -  should be able to update user", async () => {
+  test("PATCH /users/:id - Should be able to update user", async () => {
     const responseLogin = await request(app)
       .post("/login")
       .send(mockedUserLogin);
@@ -107,7 +107,7 @@ describe("/users", () => {
     expect(response.body).not.toHaveProperty("password");
   });
 
-  test("PATCH /users/:id -  should not be able to update user without authentication", async () => {
+  test("PATCH /users/:id - Should not be able to update user without authentication", async () => {
     const userUpdate = await request(app).get(baseURL);
 
     const response = await request(app)
@@ -118,7 +118,7 @@ describe("/users", () => {
     expect(response.status).toBe(401);
   });
 
-  test("PATCH /users/:id - should not be able to update user with invalid id", async () => {
+  test("PATCH /users/:id - Should not be able to update user with invalid id", async () => {
     const responseLogin = await request(app)
       .post("/login")
       .send(mockedUserLogin);
@@ -133,13 +133,13 @@ describe("/users", () => {
     expect(response.status).toBe(404);
   });
 
-  test("DELETE /users/:id -  should not be able to delete user without authentication", async () => {
+  test("DELETE /users/:id - Should not be able to delete user without authentication", async () => {
     const response = await request(app).delete(baseURL);
     expect(response.status).toBe(401);
     expect(response.body).toHaveProperty("message");
   });
 
-  test("DELETE /users/:id -  Must be able to soft delete user", async () => {
+  test("DELETE /users/:id - Must be able to soft delete user", async () => {
     await request(app).post(baseURL).send(mockedSegundUser);
 
     const responseLogin2 = await request(app)
