@@ -45,7 +45,7 @@ describe("/comments", () => {
     expect(response.body).toHaveProperty("updatedAt");
   });
 
-  test("POST /comments/id - Should NOT be able to create a comment without authentication", async () => {
+  test("POST /comments/id - Should not be able to create a comment without authentication", async () => {
     const user = await request(app).get("/users");
     mockedComment.userId = user.body[0].id;
 
@@ -82,7 +82,7 @@ describe("/comments", () => {
     expect(response.body).toHaveProperty("comments");
   });
 
-  test("GET /comments - Should NOT be able to get all comments without authentication", async () => {
+  test("GET /comments - Should not be able to get all comments without authentication", async () => {
     const user = await request(app).get("/users");
     const userId = user.body[0].id;
     const response = await request(app).get(`/comments/${userId}`);
@@ -117,7 +117,7 @@ describe("/comments", () => {
     expect(response.body).toHaveProperty("updatedAt");
   });
 
-  test("PATCH /comments - Should NOT be able to update a comment without authentication", async () => {
+  test("PATCH /comments - Should not be able to update a comment without authentication", async () => {
     const loginRes = await request(app).post("/login").send(mockedUserLogin);
     const getuser = await request(app).get(`/users`);
 
@@ -135,7 +135,7 @@ describe("/comments", () => {
     expect(response.body).toHaveProperty("message");
   });
 
-  test("PATCH /comments - Should NOT be able to update a comment without a valid ID", async () => {
+  test("PATCH /comments - Should not be able to update a comment without a valid ID", async () => {
     const loginRes = await request(app).post("/login").send(mockedUserLogin);
     const response = await request(app)
       .patch(`/comments/b855d86b-d4c9-41cd-ab98-d7fa734c6ce4`)
@@ -146,7 +146,7 @@ describe("/comments", () => {
     expect(response.body).toHaveProperty("message");
   });
 
-  test("DELETE /comments - Should NOT be able to delete a comment without authentication", async () => {
+  test("DELETE /comments - Should not be able to delete a comment without authentication", async () => {
     const loginRes = await request(app).post("/login").send(mockedUserLogin);
     const getuser = await request(app).get(`/users`);
 
@@ -162,7 +162,7 @@ describe("/comments", () => {
     expect(response.body).toHaveProperty("message");
   });
 
-  test("DELETE /comments - Should NOT be able to delete a comment without a valid ID", async () => {
+  test("DELETE /comments - Should not be able to delete a comment without a valid ID", async () => {
     const loginRes = await request(app).post("/login").send(mockedUserLogin);
 
     const response = await request(app)

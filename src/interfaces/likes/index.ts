@@ -1,14 +1,13 @@
-import { IUserResponse } from "../users"
+import { IUserResponse } from "../users";
 
-export interface likesRequst{
-    userId: string 
-    petId:string
-  
+export interface likesRequst {
+  userId: string;
+  petId: string;
 }
-export interface likes{
-    userId: string 
-    petId:string
-    createdAt:Date,
-    updatedAt:Date
-    user:IUserResponse
+export interface likes {
+  userId: string;
+  petId: string;
+  createdAt: Date;
+  updatedAt: Date;
+  user: IUserResponse;
 }

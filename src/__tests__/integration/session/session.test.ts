@@ -11,22 +11,20 @@ describe("/login", () => {
     await AppDataSource.initialize()
       .then((res) => connection = res)
       .catch((err) => console.log(err));
-
     await request(app).post("/users").send(mockedUser);
-    //criar antes de logar
   });
 
   afterAll(async () => {
     await connection.destroy();
   });
 
-  test("Post/login: login with the user", async () => {
+  test("POST /login - Should be able to login", async () => {
     const response = await request(app).post("/login").send(mockedUserLogin);
     expect(response.body).toHaveProperty("token");
     expect(response.status).toBe(200);
   });
 
-  test("should not be able to login with the user with incorrect email", async () => {
+  test("POST /login - Should not be able to login with an incorrect email", async () => {
     const response = await request(app).post("/login").send({
       email: "testeIncorreteEmail@gmail.com",
       password: "123456",
@@ -36,7 +34,7 @@ describe("/login", () => {
     expect(response.status).toBe(403);
   });
 
-  test("should not be able to login with the user with incorrect password or email", async () => {
+  test("POST /login - Should not be able to login with an incorrect password or email", async () => {
     const response = await request(app).post("/login").send({
       email: "petmatch@mail.com",
       password: "123456789",
@@ -46,4 +44,4 @@ describe("/login", () => {
     expect(response.status).toBe(403);
   });
 
-}); // end describe
+});

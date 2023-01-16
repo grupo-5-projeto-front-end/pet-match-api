@@ -13,7 +13,7 @@ export const setDataSourceConfig = (): DataSourceOptions => {
       type: "postgres",
       url: process.env.DATABASE_URL,
       entities: [entitiesPath],
-      migrations: [migrations]
+      migrations: [migrations],
     };
   };
 
@@ -22,7 +22,7 @@ export const setDataSourceConfig = (): DataSourceOptions => {
       type: "sqlite",
       database: ":memory:",
       synchronize: true,
-      entities: [entitiesPath]
+      entities: [entitiesPath],
     };
   };
 
@@ -36,7 +36,7 @@ export const setDataSourceConfig = (): DataSourceOptions => {
     logging: true,
     synchronize: false,
     entities: [entitiesPath],
-    migrations: [migrations]
+    migrations: [migrations],
   };
 };
 

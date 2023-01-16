@@ -14,7 +14,6 @@ import {
 } from "../middleware";
 
 export const usersRoutes = Router();
-
 usersRoutes.post(
   "/users",
   verifyRequestPerSchema(userRequestSchema),
@@ -22,7 +21,6 @@ usersRoutes.post(
 );
 
 usersRoutes.get("/users", listUsersController);
-
 usersRoutes.get("/users/:id", verifyUserIdParameter, listUserByIdController);
 
 usersRoutes.patch(
