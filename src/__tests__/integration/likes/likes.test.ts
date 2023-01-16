@@ -69,4 +69,30 @@ describe("/likes", () => {
     expect(response.status).toBe(409);
     expect(response.body).toHaveProperty("message");
   });
+
+  test("GET /likes/:id - Should be able to list all likes of a pet", async () => {
+    const loginRes = await request(app).post("/login").send(mockedUserLogin);
+    const pet = await request(app).get("/pets");
+
+    const response = await request(app)
+      .get(`/likes/${pet.body[0].id}`)
+      .set("Authorization", `Bearer ${loginRes.body.token}`);
+
+    expect(response.status).toBe(200);
+    expect(response.body).toHaveProperty("map");
+  });
+
+  test("DELETE /likes/:id - Should be able to delete a like", async () => {
+    const loginRes = await request(app).post("/login").send(mockedUserLogin);
+    const pet = await request(app).get("/pets");
+    const like = await request(app)
+      .get(`/likes/${pet.body[0].id}`)
+      .set("Authorization", `Bearer ${loginRes.body.token}`);
+
+    const response = await request(app)
+      .delete(`/likes/${like.body[0].id}`)
+      .set("Authorization", `Bearer ${loginRes.body.token}`);
+
+    expect(response.status).toBe(204);
+  });
 });
