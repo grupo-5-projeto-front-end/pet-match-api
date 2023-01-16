@@ -1,6 +1,5 @@
 import { AppDataSource } from "../../data-source";
 import { Likes } from "../../entities/likesEntity";
-import { Pets } from "../../entities/petsEntity";
 
 export const listLikesService = async (petId: string) => {
   const likesRepo = AppDataSource.getRepository(Likes);

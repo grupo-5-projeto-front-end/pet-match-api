@@ -15,7 +15,7 @@ export const setDataSourceConfig = (): DataSourceOptions => {
       entities: [entitiesPath],
       migrations: [migrations],
     };
-  }
+  };
 
   if (nodeEnv === "test") {
     return {
@@ -24,7 +24,7 @@ export const setDataSourceConfig = (): DataSourceOptions => {
       synchronize: true,
       entities: [entitiesPath],
     };
-  }
+  };
 
   return {
     type: "postgres",

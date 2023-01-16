@@ -4,7 +4,7 @@ import AppError from "../errors/AppError";
 
 export const verifyRequestPerSchema =
   (schema: AnySchema) =>
-  async (req: Request, res: Response, next: NextFunction) => {
+  async (req: Request, res: Response, next: NextFunction): Promise<void> => {
     try {
       const validate = await schema.validate(req.body, {
         abortEarly: false,
@@ -15,5 +15,5 @@ export const verifyRequestPerSchema =
       return next();
     } catch (error) {
       throw new AppError(error.errors, 401);
-    }
+    };
   };

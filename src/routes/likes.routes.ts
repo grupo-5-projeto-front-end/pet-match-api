@@ -16,6 +16,7 @@ likesRoutes.post(
 );
 
 likesRoutes.delete("/likes/:id", verifyAuth, deleteLikeController);
+
 likesRoutes.get(
   "/likes/:id",
   verifyAuth,

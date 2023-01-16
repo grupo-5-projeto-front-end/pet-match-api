@@ -14,12 +14,10 @@ export const app = express();
 
 app.use(express.json());
 
-//Routes
 app.use("", sessionsRoutes);
 app.use("", usersRoutes);
 app.use("", commentsRoutes);
 app.use("", petsRoutes);
 app.use("", likesRoutes);
 
-// errorHandler DEVE SER SEMPRE O ÚLTIMO DOS app.use()
 app.use(errorHandler);

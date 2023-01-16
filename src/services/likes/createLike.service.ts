@@ -5,10 +5,7 @@ import { Users } from "../../entities/usersEntity";
 import AppError from "../../errors/AppError";
 import { petResponseSchema } from "../../schemas";
 
-export const createLikeService = async (
-  userId: string,
-  petId: string
-): Promise<Pets> => {
+export const createLikeService = async (userId: string, petId: string) => {
   const likesRepo = AppDataSource.getRepository(Likes);
   const usersRepo = AppDataSource.getRepository(Users);
   const petsRepo = AppDataSource.getRepository(Pets);
@@ -26,7 +23,7 @@ export const createLikeService = async (
 
   if (like) {
     throw new AppError("You can't like this pet again", 409);
-  }
+  };
 
   const newLike = likesRepo.create({
     pet: pet,
@@ -34,7 +31,6 @@ export const createLikeService = async (
   });
 
   await likesRepo.save(newLike);
-
   const response = await petsRepo.findOne({
     where: {
       id: petId,

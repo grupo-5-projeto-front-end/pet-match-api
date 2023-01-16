@@ -19,8 +19,10 @@ usersRoutes.post(
   verifyRequestPerSchema(userRequestSchema),
   createUserController
 );
+
 usersRoutes.get("/users", listUsersController);
 usersRoutes.get("/users/:id", verifyUserIdParameter, listUserByIdController);
+
 usersRoutes.patch(
   "/users/:id",
   verifyUserIdParameter,
@@ -28,4 +30,5 @@ usersRoutes.patch(
   verifyRequestPerSchema(userUpdateRequestSchema),
   patchUserController
 );
+
 usersRoutes.delete("/users", verifyAuth, softDeleteUserController);

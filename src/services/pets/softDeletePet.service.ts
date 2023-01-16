@@ -12,11 +12,11 @@ export const softDeletePetService = async (petId: string, userId: string) => {
 
   if (!pet) {
     throw new AppError("Pet not found", 404);
-  }
+  };
 
   if (pet.user.id !== userId) {
     throw new AppError("No access permission", 403);
-  }
+  };
 
   await petRepo.softRemove(pet);
   await petRepo.update(petId, { isActive: false });

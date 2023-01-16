@@ -7,7 +7,7 @@ export const verifyAuth = async (
   req: Request,
   resp: Response,
   next: NextFunction
-) => {
+): Promise<void> => {
   let token = req.headers.authorization;
   if (!token) throw new AppError("Invalid Token", 401);
 
@@ -27,6 +27,5 @@ export const verifyAuth = async (
       };
     }
   );
-
   return next();
 };

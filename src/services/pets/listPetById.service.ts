@@ -5,7 +5,7 @@ import { petResponseSchema } from "../../schemas";
 
 export const listPetByIdService = async (
   petId: string
-): Promise<IPetResponse> => {
+) => {
   const petsRepo = AppDataSource.getRepository(Pets);
 
   const pet = await petsRepo.findOneBy({

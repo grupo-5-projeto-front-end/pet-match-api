@@ -2,7 +2,7 @@ import { AppDataSource } from "../../data-source";
 import { Users } from "../../entities/usersEntity";
 import AppError from "../../errors/AppError";
 
-export const softDeleteUserService = async (userId: string): Promise<void> => {
+export const softDeleteUserService = async (userId: string) => {
   const userRepo = AppDataSource.getRepository(Users);
 
   const userToBeDeleted = await userRepo.findOne({
@@ -15,12 +15,12 @@ export const softDeleteUserService = async (userId: string): Promise<void> => {
   if (userToBeDeleted.isActive == false) {
     throw new AppError("This user has been deleted.", 400);
   }
-  
+
   await userRepo.softRemove(userToBeDeleted);
-  const user = await userRepo.save({
+  await userRepo.save({
     ...userToBeDeleted,
     isActive: false,
   });
 
-  return;
+  return {};
 };
